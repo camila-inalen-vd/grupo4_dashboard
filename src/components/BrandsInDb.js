@@ -8,9 +8,9 @@ function BrandsInDb() {
       fetch('http://localhost:3001/api/brands')
       .then(response => response.json())
       .then(data => {
-          setBrands(data.brands)
+          setBrands(data.data)
       })
-  })
+  }, [])
 
 
   return (
@@ -18,16 +18,16 @@ function BrandsInDb() {
       <div className="card shadow mb-4">
         <div className="card-header py-3">
           <h5 className="m-0 font-weight-bold text-gray-800">
-            Marcas en BD
+            Marcas disponibles
           </h5>
         </div>
         <div className="card-body">
           <div className="row">
           {brands.map(brand => {
             return(
-              <div className="col-lg-6 mb-4">
-              <div className="card bg-dark text-white shadow">
-                <div className="card-body">{brand.name}</div>
+              <div key={brand?.brands.id} className="col-lg-6 mb-4">
+              <div className="card bg-primary text-white shadow">
+                <div className="card-body">{brand.brands.name} [{brand.totalProducts} productos disponibles]</div>
               </div>
             </div>
             )

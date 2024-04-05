@@ -10,14 +10,14 @@ function LastProductInDb () {
             let product = data.products.pop()
             setLastProduct(product)
         })
-    })
+    }, [])
 
 
     return(
         <div className="col-lg-6 mb-4">
             <div className="card shadow mb-4">
                 <div className="card-header py-3">
-                    <h5 className="m-0 font-weight-bold text-gray-800">Último producto agregado a BD</h5>
+                    <h5 className="m-0 font-weight-bold text-gray-800">Último producto agregado</h5>
                 </div>
                 <div className="card-body">
                     <div className="text-center">
@@ -25,7 +25,7 @@ function LastProductInDb () {
                     </div>
                     <h3>{product?.name}</h3>
                     <p>{product?.large_description}</p>
-                    <a className="btn btn-danger" rel="nofollow" href={"http://localhost:3001/product/detail/" + product?.id}>Ver Detalle</a>
+                    <a className="btn btn-primary" rel="nofollow" href={product?.detailUrl}>Ver Detalle</a>
                 </div>
             </div>
         </div>
